@@ -3,7 +3,7 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-  <% if enhanced_cart.length > 0  %>
+  <% if !enhanced_cart.empty?  %>
     <div class="panel panel-default items">
     
       <table class="table table-bordered">
@@ -55,6 +55,6 @@
     <p class="alert-info">
       Your cart is empty. 
     </p>
-    <button><%= link_to 'Home', :root %></button>
+    <%= link_to '<button type="button">Continue Shopping</button>'.html_safe, :root %>
   <% end %>
 </section>
