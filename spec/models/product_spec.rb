@@ -25,21 +25,21 @@ RSpec.describe Product, type: :model do
     end
 
     it "does not save nil in price field" do
-      @product = Product.new(:name => nil, :price_cents => nil, :quantity => @quantity, :category => @category )
+      @product = Product.new(:name => @name, :price_cents => nil, :quantity => @quantity, :category => @category )
       
       expect(@product).to_not be_valid
       expect(@product.errors.full_messages.empty?).to_not be_truthy
     end
 
     it "does not save nil in quantity field" do
-      @product = Product.new(:name => nil, :price_cents => @price, :quantity => nil, :category => @category )
+      @product = Product.new(:name => @name, :price_cents => @price, :quantity => nil, :category => @category )
       
       expect(@product).to_not be_valid
       expect(@product.errors.full_messages.empty?).to_not be_truthy
     end
 
     it "does not save nil in category field" do
-      @product = Product.new(:name => nil, :price_cents => @price, :quantity => @quantity, :category => nil )
+      @product = Product.new(:name => @name, :price_cents => @price, :quantity => @quantity, :category => nil )
       
       expect(@product).to_not be_valid
       expect(@product.errors.full_messages.empty?).to_not be_truthy
