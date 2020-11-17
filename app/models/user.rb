@@ -10,16 +10,11 @@ class User < ActiveRecord::Base
 
   def self.authenticate_with_credentials(email_param, password_param)
     @user = User.find_by(email: email_param.downcase.strip)
-    puts "------------"
-    puts @user.inspect
-    if @user == nil
-      nil
-    elsif @user.authenticate(password_param)
+    if @user && @user.authenticate(password_param)
       @user
     else 
       nil
     end
-
   end
 
   private
