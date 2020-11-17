@@ -8,6 +8,19 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   # validate :check_email_format
 
+  def self.authenticate_with_credentials(email_param, password_param)
+    @user = User.find_by(email: email_param.downcase.strip)
+    puts "------------"
+    puts @user.inspect
+    if @user == nil
+      nil
+    elsif @user.authenticate(password_param)
+      @user
+    else 
+      nil
+    end
+
+  end
 
   private
   def normalize_email
