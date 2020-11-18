@@ -19,7 +19,12 @@ class User < ActiveRecord::Base
 
   private
   def normalize_email
-    email.to_s.downcase!
+    if email 
+      
+      email.downcase!
+      email.strip
+      
+    end
   end
 
  
